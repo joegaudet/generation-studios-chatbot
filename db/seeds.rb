@@ -4,6 +4,30 @@
 #
 # Example:
 #
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+
+def seed_conversation(account)
+  conversation = account.conversations.create!
+  conversation.messages.create(message_type: :human, body: Faker::Lorem.sentence)
+  conversation.messages.create(message_type: :ai, body: Faker::Lorem.sentence)
+  conversation.messages.create(message_type: :human, body: Faker::Lorem.sentence)
+  conversation.messages.create(message_type: :ai, body: Faker::Lorem.sentence)
+  conversation.messages.create(message_type: :human, body: Faker::Lorem.sentence)
+  conversation.messages.create(message_type: :ai, body: Faker::Lorem.sentence)
+  conversation.messages.create(message_type: :human, body: Faker::Lorem.sentence)
+  conversation.messages.create(message_type: :ai, body: Faker::Lorem.sentence)
+  conversation.messages.create(message_type: :human, body: Faker::Lorem.sentence)
+  conversation.messages.create(message_type: :ai, body: Faker::Lorem.sentence)
+end
+
+def seed_user(user)
+  account = user.create_account
+  (1..rand(5)).each do
+    seed_conversation(account)
+  end
+end
+
+seed_user(FactoryBot.create(:user))
+seed_user(FactoryBot.create(:user))
+seed_user(FactoryBot.create(:user))
+seed_user(FactoryBot.create(:user))
+seed_user(FactoryBot.create(:user))
