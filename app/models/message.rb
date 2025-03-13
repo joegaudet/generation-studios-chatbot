@@ -15,7 +15,7 @@
 class Message < ApplicationRecord
   default_scope { order(created_at: :asc) }
   attribute :message_type, :string
-  enum :message_type, { human: 'human', ai: 'ai' }
+  enum :message_type, { human: "human", ai: "ai" }
   belongs_to :conversation
   has_many_attached :images
 

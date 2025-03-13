@@ -15,7 +15,6 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
-
   it 'orders by created_at asc' do
     messages = []
     messages << FactoryBot.create(:message, :ai)
@@ -38,7 +37,6 @@ RSpec.describe Message, type: :model do
   end
 
   describe 'message_types' do
-
     let!(:human_messages) {
       [
         FactoryBot.create(:message, :human),
@@ -49,7 +47,7 @@ RSpec.describe Message, type: :model do
       [
         FactoryBot.create(:message, :ai),
         FactoryBot.create(:message, :ai),
-        FactoryBot.create(:message, :ai),
+        FactoryBot.create(:message, :ai)
       ]
     }
 
