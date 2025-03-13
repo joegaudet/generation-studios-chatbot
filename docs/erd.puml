@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide empty members
+
+class User {
+    + email: String
+}
+
+class Account {
+    + owner: User
+    + conversations: Conversation[]
+}
+
+class Conversation {
+    + created_at: DateTime
+    + updated_at: DateTime
+    + messages: Message[]
+}
+
+class Message {
+    + type: MessageType
+    + image: Image[]
+}
+
+enum MessageType {
+  HUMAN
+  AI
+}
+
+class Image {
+  + message: Message
+}
+
+class ActiveStorage::Attachment {
+}
+
+' Inhertiance
+Image <|--- ActiveStorage::Attachment
+
+' Assocations
+User -- Account
+Account o-- Conversation
+Conversation o-- Message
+Message o-- Image
+Message -- MessageType
+
+@enduml
