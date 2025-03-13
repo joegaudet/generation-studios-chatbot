@@ -1,6 +1,6 @@
 class CreateMessages < ActiveRecord::Migration[8.0]
   def change
-    create_enum :message_type, ["human", "ai"]
+    create_enum :message_type, [ "human", "ai" ]
 
     create_table :messages do |t|
       t.timestamps
