@@ -84,6 +84,7 @@ jobs:
       - name: Run Specs
         env:
           RAILS_ENV: test
+          DATABASE_URL: "postgres://postgres:password@localhost:5432/generation-studios-chatbot_test"
         run: bin/rails db:test:prepare spec test:system
 
       - name: Keep screenshots from failed system tests
